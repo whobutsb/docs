@@ -53,9 +53,6 @@ For example allows connecting to mysql db on gui using the localhost (127.0.0.1:
     //Paste the clipboard
     pbpaste
 
-####Start a tunnel from some machine's port to your local port 2001
-    ssh -N -L 2001:localhost:80 somemachine
-
 ####Get external IP Address   
     curl ifconfig.me/ip -> IP Adress
     curl ifconfig.me/host -> Remote Host
@@ -219,3 +216,28 @@ _Ack Examples:_
 - search for a pattern recursively case-insensitive <br> `ack <pattern>`
 - search php files for thing recursively            <br> `ack --php <pattern>`
 - search all files except javascript files          <br> `ack --nojs <pattern>`
+
+##File System Hieracrhy
+- Everything is a file in Linux
+_Run down of the FSH:_
+
+- `/`          — Root of the filesystem
+- `/bin`       — system binaries—computer needs to boot
+- `/boot`      — boot loader (/boot/grub/grub.conf or menu.lst), Linux kernel (/boot/vmlinuz)
+- `/dev`       — System devices (more info: http://en.wikipedia.org/wiki/Device_file)
+- `/etc`       — System-wide configuration files
+- `/home`      — User configuration files, users can ususally only write files in their home directory
+- `/lib`       — shared library files used by system binaries
+- `/media`     — auto-mounting removable media (CDRom, USB Drives, etc)
+- `/mnt`       — temp filesystems (USB Drives mounted manually)
+- `/opt`       — "optional software", Libreoffice installs here, some sysadmins like to install software here
+- `/proc`      — provides kernel information as files
+- `/root`      — home directory for root user
+- `/srv`       — media served by the system - I think it makes sense to have website data here rather than /var/www
+- `/sbin`      — sysadmin binaries (e.g., /sbin/ifconfig gives you ip information)
+- `/tmp`       — temporary storage - cleaned frequently
+- `/usr`       — programs, libraries etc for all system users
+- `/usr/bin`   — programs installed for all users by linux (e.g. /usr/bin/find)
+- `/usr/local` — sysadmins (me) download and install things here (executables in /usr/local/bin, source files in /usr/local/src)
+- `/usr/sbin`  — more sysadmin binaries (e.g., /usr/sbin/usermod lets me modify a user)
+- `/var`       — data that chanes frequently is stored here (e.g. /var/log for log files /var/www/ for webservers)
