@@ -1,6 +1,8 @@
 #Cheat Sheets and Documentation
 Documentation and Information about programming, server management, web server management, and other frequently searched for documentation.
 
+Inspired by [Tyler Cipriani](https://github.com/thcipriani/)
+
 ###[Apache Docs](apache.md)
 ###[MySQL Docs](mysql.md)
 ###[PHP Docs](php.md)
