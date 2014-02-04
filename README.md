@@ -24,6 +24,30 @@ Your SSH configuration file lives in `~/.ssh/config`
         IdentityFile /path/to/file
         Post port_number
 
+####Setting up SSH on a new server
+  
+Install the SSH Server
+
+    sudo apt-get install openssh-server openssh-client
+  
+Restart the SSH Server
+    
+    sudo /etc/init.d/ssh restart | stop | start
+
+Upload SSH Key to Remote Server
+
+    #may not work on macs
+    ssh-copy-id -i [identity.pub] username@hostname
+    cat ~/ssh/public_keys/identity.pub | ssh username@hostname "mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys"
+
+Edit /etc/ssh/sshd_config on the remote server
+    
+    sudo vim /etc/ssh/sshd_config
+  
+Change the PermitRootLogin so that only users with ssh keys can login
+    
+    PermitRootLogin without-password
+
 ####Port Forwarding
 Forwards all local port 9906 to port 3306 on the remote host.
 For example allows connecting to mysql db on gui using the localhost (127.0.0.1:9906).
