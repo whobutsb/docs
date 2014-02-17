@@ -4,9 +4,15 @@ Documentation and Information about programming, server management, web server m
 Inspired by [Tyler Cipriani](https://github.com/thcipriani/)
 
 ###[Apache Docs](apache.md)
+###[Laravel Docs](laravel.md)
 ###[MySQL Docs](mysql.md)
+###[nginx](nginx.md)
 ###[PHP Docs](php.md)
 ###[Vagrant](vagrant.md)
+
+__Links__
+Server Security 
+http://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers
 
 ##Networking 
 __Helpful Links__
