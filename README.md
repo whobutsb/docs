@@ -96,7 +96,25 @@ For example allows connecting to mysql db on gui using the localhost (127.0.0.1:
 ####Copy a directory from the remote to the local
     scp -r hostname:file_name /path/to/local/directory
 
-    
+
+##Tar and Compressing
+
+__Compressing a directory__
+
+    tar -zcvf archive_name.tar.gz folder_to_compress
+
+__To Extract__
+
+    tar -zxvf archive_name.tar.gz
+
+__Options__
+
+- z: Compress the backup with gzip to make it smaller
+- c: Create a new backup archive 
+- v: Verbose mode to see whats happening
+- p: Preserver the permission files in the archive for restoration later.
+- f: Specifies wher to sotre the backup file
+
 ##Searching
 
 **Find**
