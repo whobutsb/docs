@@ -21,6 +21,9 @@ __To Dump The Auto Classes__
 ##CLI Interaction 
     $ art tinker
 
+- `art routes` Gives all the routes in the application.
+
+
 Get help on a function
 
     art help controller:make
@@ -38,6 +41,73 @@ Handing get variables
         return View::make('users.show', ['user' => $username]); 
         //users.show == users/show == app/view/users/show
     }); 
+
+Simple Get Route
+
+    Route::get('users', 'UsersController@index'); 
+
+Route with a variable 
+    
+    Route::get('users/show/{id}', UsersController@show); 
+
+__Named Routes__, can be used to reference where to go. 
+    
+    Route::get('user/profile', array('as' => 'profile', 'uses' => 'UserController@showProfile'));
+
+Later on in the application, can be referenceds.
+
+    $url = URL::route('profile'); //http://localhost/user/profile
+    $redirect = Redirect::route('profile'); //Redirects the page to the route. 
+
+
+__Resource URLs__
+Creates all of the possible HTTP Verbs for the UserController. Use `art routes` to see the output. Used for RESTful style of development.
+    
+    Route::resource('users', 'UsersController'); 
+
+Excluding Routes
+    
+    Route::resource('users', 'UsersController', ['except' => ['create', 'store', 'update']]); 
+
+Specifying Routes
+    
+    Route::resource('users', 'UsersController', ['only' => ['create', 'show']]); 
+
+Specifying Route Names
+Route::resource('users', 'UsersController', ['names' => ['create' => 'user.build']]); 
+
+##Controllers
+
+Simple Controller with variable
+
+    public function show($id){
+        $user = User::find($id); 
+        return View::make('users.show', ['user' => $user]); 
+    }
+
+
+###Input
+
+Get the all input POST or GET variables
+
+    Input::all();
+
+Get a specific input
+
+    Input::get('field'); 
+
+###Validation
+
+Setup the validation and the rules
+
+    $validation = Validatior::make(Input::all(), ['username' => 'required', 'password' => 'required']); 
+
+Check the validation and reutrn to the previous controller with the input and with the errors.
+
+    if($validation->fails()){
+        return Redirect::back()->withInput()->withErrors($validation->messages()); // $validation->messages() could be whatever
+    }
+
 
 ##Models
 
@@ -125,13 +195,29 @@ Passing in view data within the controller or router
     $users = User::all(); 
     return View::make('users/index', ['users => $users']); 
 
+
+###Forms
+
+Specifying a Route Name or Controller Method
+
+    echo Form::open(['route' => 'route.name']); 
+    echo Form::open(['action' => 'Controller@method']); 
+
+Adding in Parameters
+
+    echo Form::open(['route' => ['route.name', $user->id]]); 
+
+
+
+Form 
+
 ###Blade
 
 ###Helper Functions 
 
-- `link_to('controller/method', 'text')` - <a href="controller/method">Text</a>
-- `dd` dump and die; 
-- 
+- `link_to('controller/method', 'Text Link')` - <a href="controller/method">Text Link</a>
+- `dd` dump and die. 
+
 
 
 
